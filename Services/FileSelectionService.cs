@@ -18,7 +18,7 @@ namespace TextReplacer.Services
             FileDialog.ShowDialog();
 
             Caminho = FileDialog.FileName;
-            Nome = Path.GetFileName(Caminho);
+            Nome = Path.GetFileNameWithoutExtension(Caminho);
             return Nome;
         }
     }

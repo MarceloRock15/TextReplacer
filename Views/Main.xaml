@@ -10,7 +10,7 @@
     <Grid Background="White">
         <TextBlock HorizontalAlignment="Left" Margin="40,28,0,0" TextWrapping="Wrap" Text="TextReplacer" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="40,65,0,0" Text="Localize uma palavra em um documento de texto e substitua por outra palavra" VerticalAlignment="Top" FontSize="16" TextWrapping="Wrap" Width="310"/>
-        <Image HorizontalAlignment="Right" Height="102" Margin="0,28,41,0" VerticalAlignment="Top" Width="146" Source="/images/Main.png" OpacityMask="Black" Grid.Row="0"/>
+        <Image HorizontalAlignment="Right" Height="102" Margin="0,28,41,0" VerticalAlignment="Top" Width="146" Source="\Assets\Images\Main.png" OpacityMask="Black" Grid.Row="0"/>
         <StackPanel Margin="40,122,41,51">
             <GroupBox Height="100" Header="1. Selecionar arquivo" Background="White" FontSize="20" FontWeight="Bold" BorderThickness="2,2,2,2">
                 <Border Height="56" Margin="16,0,16,0" BorderBrush="#FFD5DFE5" BorderThickness="2,2,2,2" CornerRadius="10,10,10,10" >
@@ -39,6 +39,9 @@
                 <Grid>
                     <Border Height="45" Margin="14,11,442,10" Background="#FF2478CE" CornerRadius="10,10,10,10" >
                         <Button x:Name="btnSubstituir" Content="Substituir no arquivo" Cursor="Hand" Background="#FF2478CE" Foreground="White" FontWeight="Normal" BorderThickness="0,0,0,0" Margin="3,3,3,3" Click="btnSubstituir_Click"/>
+                    </Border>
+                    <Border Height="45" Margin="300,11,155,10" Background="#10B981" CornerRadius="10,10,10,10" >
+                        <Button x:Name="btnSubstituir1" Content="Salvar arquivo" Cursor="Hand" Background="#10B981" Foreground="White" FontWeight="Normal" BorderThickness="0,0,0,0" Margin="3,3,3,3" Click="btnSalvar_Click"/>
                     </Border>
                 </Grid>
             </GroupBox>

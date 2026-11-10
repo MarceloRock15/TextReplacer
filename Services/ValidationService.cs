@@ -9,21 +9,24 @@ namespace TextReplacer.Services
         // Verifica se o usuário escolheu algum arquivo
         public bool ArquivoSelecionado(FileSelectionService file)
         {
-            if (file == null)
-            {
-                return false;
-            }
-            return true;
+            return file != null && !string.IsNullOrEmpty(file.Caminho);
         }
 
         // Verifica se o usuário digitou ambos os termos
         public bool TermoDigitado(TextReplacementService text)
         {
-            if (string.IsNullOrEmpty(text.TermoASubstituir) || string.IsNullOrEmpty(text.TermoSubstituto))
-            {
-                return false;
-            };
-            return true;
+            return !string.IsNullOrEmpty(text.TermoASubstituir)
+                && !string.IsNullOrEmpty(text.TermoSubstituto);
+        }
+
+        // Verifica se o termo a substituir existe no texto atual (já com as substituições anteriores)
+        public bool TermoExiste(TextReplacementService text, FileSelectionService file)
+        {
+            text.CarregarSeNecessario(file);
+
+            return text.TextoAModificar.IndexOf(
+                text.TermoASubstituir,
+                StringComparison.OrdinalIgnoreCase) >= 0;
         }
     }
 }

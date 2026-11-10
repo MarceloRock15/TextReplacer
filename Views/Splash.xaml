@@ -22,7 +22,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid>
-        <Image HorizontalAlignment="Center" Height="249" VerticalAlignment="Center" Width="376" Source="\images\Splash.png"/>
+        <Image HorizontalAlignment="Center" Height="249" VerticalAlignment="Center" Width="376" Source="\Assets\Images\Splash.png"/>
 
     </Grid>
 </Window>

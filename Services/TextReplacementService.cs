@@ -8,17 +8,33 @@ using Microsoft.Win32;
 
 namespace TextReplacer.Services
 {
-    internal class TextReplacementService
+    class TextReplacementService
     {
+        private string _caminhoCarregado;
         public string TermoASubstituir { get; set; }
         public string TermoSubstituto { get; set; }
+        public string TextoAModificar { get; set; }
+
+        public void CarregarSeNecessario(FileSelectionService file)
+        {
+            if (TextoAModificar == null || _caminhoCarregado != file.Caminho)
+            {
+                TextoAModificar = File.ReadAllText(file.Caminho);
+                _caminhoCarregado = file.Caminho;
+            }
+        }
         public void SubstituirNoArquivo(FileSelectionService file)
         {
-            // Lê todo o texto do arquivo e transforma em uma string
-            string texto = File.ReadAllText(file.Caminho);
+            CarregarSeNecessario(file);
+            // Só lê do disco se ainda não carregou, ou se o arquivo mudou
+            if (TextoAModificar == null || _caminhoCarregado != file.Caminho)
+            {
+                TextoAModificar = File.ReadAllText(file.Caminho);
+                _caminhoCarregado = file.Caminho;
+            }
 
             // Substituição dos termos
-            texto = Regex.Replace(texto, Regex.Escape(TermoASubstituir), match =>
+            TextoAModificar = Regex.Replace(TextoAModificar, Regex.Escape(TermoASubstituir), match =>
             {
                 string encontrado = match.Value;
 
@@ -33,15 +49,6 @@ namespace TextReplacer.Services
                     return TermoSubstituto.ToLower();
                 }
             }, RegexOptions.IgnoreCase);
-
-            // Abre o explorador de arquivos para o usuário escolher onde salvar
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Arquivo de texto|*.txt";
-            saveFileDialog.ShowDialog();
-            var CaminhoSalvar = System.IO.Path.GetFullPath(saveFileDialog.FileName);
-
-            // Salva um novo arquivo de texto atualizado
-            File.WriteAllText(CaminhoSalvar, texto);
         }
     }
 }
