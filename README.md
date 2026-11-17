@@ -48,18 +48,27 @@ TextReplacer/
 │
 ├── Assets/
 │   ├── Icons/
+│   │   └── icon.ico
 │   └── Images/
-│
-├── Views/
-│
-├── Services/
+│       ├── Main.png
+│       └── Splash.png
 │
 ├── Properties/
 │   └── PublishProfiles/
 │
-├── docs/
+├── screenshots/
 │   ├── tela-principal.png
-│   └── tela-inicializacao.png
+│   └── tela-splash.png
+│
+├── Services/
+│   ├── FileSavingService.cs
+│   ├── FileSelectionService.cs
+│   ├── TextReplacementService.cs
+│   └── ValidationService.cs
+│
+├── Views/
+│   ├── Main.xaml
+│   └── Splash.xaml
 │
 ├── App.xaml
 ├── App.xaml.cs
